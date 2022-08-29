@@ -17,10 +17,10 @@ public class StudentController {
     @Resource
     private StudentService studentService;
 
-    @PostMapping("/getStudent")
-    public List<User> getUser(UserParam userParam) {
-        return studentService.(userParam);
-    }
+//    @PostMapping("/getStudent")
+//    public List<User> getUser(UserParam userParam) {
+//        return studentService.findStudent(userParam);
+//    }
 
 
 }

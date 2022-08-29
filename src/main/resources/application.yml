@@ -2,7 +2,7 @@ server:
   port: 2333
 spring:
   application:
-    name: tstjpa
+    name: springjpademo
 
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
@@ -12,7 +12,7 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
     show-sql: true
 
 

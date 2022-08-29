@@ -43,11 +43,11 @@ public class Student {
     }
 
     public Integer getClazz_id() {
-        return clazz_id;
+        return clazz.getId();
     }
 
     public void setClazz_id(Integer clazz_id) {
-        this.clazz_id = clazz_id;
+        this.clazz.setId(clazz_id) ;
     }
 
     @Override
@@ -56,7 +56,7 @@ public class Student {
                 "id=" + id +
                 ", studentname='" + studentname + '\'' +
                 ", studentcode='" + studentcode + '\'' +
-                ", clazz_id=" + clazz_id +
+                //", clazz_id=" + clazz_id +
                 '}';
     }
 }
