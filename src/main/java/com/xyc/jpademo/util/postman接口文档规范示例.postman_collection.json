@@ -1,0 +1,2435 @@
+{
+	"info": {
+		"_postman_id": "ca4514c5-1055-4314-ae7e-c68d6f52b1ed",
+		"name": "postman接口文档规范示例",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "01登录获得token接口",
+			"item": [
+				{
+					"name": "登录获得token接口",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7a42697a-b0b6-41b7-8f28-359c520c621c",
+								"exec": [
+									"var data = JSON.parse(responseBody);",
+									"if(data.data.token){",
+									"    tests[\"Body has token\"] = true;",
+									"    postman.setEnvironmentVariable(\"token\",data.data.token);",
+									"}else{",
+									"    tests[\"Body has token\"] = false;",
+									"}",
+									"console.log(pm.variables.get(\"token\"));"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"pid\": \"MZsgnGquvqUAKalM2bpBEw==\",\r\n\t\r\n\"uid\": \"lvNIqPy0iSpM42mIDx1Zcg==\"}"
+						},
+						"url": "http://192.168.30.66:9090/api/proxy/auth/login"
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "43a5037f-46b1-4c23-85a1-d7151b9a959c",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "4241c02a-9c4b-4700-9c2a-39fb71a1025b",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "02数据字典，数据常量",
+			"item": [
+				{
+					"name": "01行业类别",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/sys/enumCode?codeValue=IndustryCategory",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"sys",
+								"enumCode"
+							],
+							"query": [
+								{
+									"key": "codeValue",
+									"value": "IndustryCategory"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "01行业类别",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/sys/enumCode?codeValue=IndustryCategory",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"sys",
+										"enumCode"
+									],
+									"query": [
+										{
+											"key": "codeValue",
+											"value": "IndustryCategory"
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "[\r\n    {\r\n        \"rowGuid\": \"string  主键  d97930c38e8b46cd8d2382b680006142\",\r\n        \"extendD3\": null,\r\n        \"extendI3\": null,\r\n        \"extendD2\": null,\r\n        \"extendI2\": null,\r\n        \"extendS3\": null,\r\n        \"extendD4\": null,\r\n        \"extendF3\": null,\r\n        \"cssStyle\": \"\",\r\n        \"cssClass\": \"\",\r\n        \"sortNum\": 100000,\r\n        \"id\": 6248,\r\n        \"dictName\": \"string 数据字典名称 农业\",\r\n        \"dictCode\": \"01\",\r\n        \"dictType\": \"IndustryCategory\",\r\n        \"extendS1\": null,\r\n        \"extendS2\": null,\r\n        \"extendS4\": null,\r\n        \"extendI1\": null,\r\n        \"extendI4\": null,\r\n        \"extendF1\": null,\r\n        \"extendF2\": null,\r\n        \"extendF4\": null,\r\n        \"extendD1\": null,\r\n        \"parentId\": \"0\",\r\n        \"dictValue\": \"1\"\r\n    },\r\n    {\r\n        \"rowGuid\": \"d97930c38e8b46cd8d2382b680006143\",\r\n        \"extendD3\": null,\r\n        \"extendI3\": null,\r\n        \"extendD2\": null,\r\n        \"extendI2\": null,\r\n        \"extendS3\": null,\r\n        \"extendD4\": null,\r\n        \"extendF3\": null,\r\n        \"cssStyle\": \"\",\r\n        \"cssClass\": \"\",\r\n        \"sortNum\": 99990,\r\n        \"id\": 6249,\r\n        \"dictName\": \"谷物及其他作物的种植\",\r\n        \"dictCode\": \"011\",\r\n        \"dictType\": \"IndustryCategory\",\r\n        \"extendS1\": null,\r\n        \"extendS2\": null,\r\n        \"extendS4\": null,\r\n        \"extendI1\": null,\r\n        \"extendI4\": null,\r\n        \"extendF1\": null,\r\n        \"extendF2\": null,\r\n        \"extendF4\": null,\r\n        \"extendD1\": null,\r\n        \"parentId\": \"d97930c38e8b46cd8d2382b680006142\",\r\n        \"dictValue\": \"2\"\r\n    }]"
+						}
+					]
+				},
+				{
+					"name": "02污染源类别",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/sys/enumCode?codeValue=polluctionCategory",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"sys",
+								"enumCode"
+							],
+							"query": [
+								{
+									"key": "codeValue",
+									"value": "polluctionCategory"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "03获取所有行政区域",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "{{url}}/api/sys/area"
+					},
+					"response": []
+				},
+				{
+					"name": "04注册类型",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/sys/enumCode?codeValue=unitsCategory",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"sys",
+								"enumCode"
+							],
+							"query": [
+								{
+									"key": "codeValue",
+									"value": "unitsCategory"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "05单位类别",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/sys/enumCode?codeValue=EnterpriseUnitCategory",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"sys",
+								"enumCode"
+							],
+							"query": [
+								{
+									"key": "codeValue",
+									"value": "EnterpriseUnitCategory"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "06污染源规模",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/sys/enumCode?codeValue=PollutionSourceScale",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"sys",
+								"enumCode"
+							],
+							"query": [
+								{
+									"key": "codeValue",
+									"value": "PollutionSourceScale"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "07隶属关系",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/sys/enumCode?codeValue=SubjectionRelation",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"sys",
+								"enumCode"
+							],
+							"query": [
+								{
+									"key": "codeValue",
+									"value": "SubjectionRelation"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "08水域功能区类别",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/sys/enumCode?codeValue=WaterFunctionalArea",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"sys",
+								"enumCode"
+							],
+							"query": [
+								{
+									"key": "codeValue",
+									"value": "WaterFunctionalArea"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "09噪声功能区",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/sys/enumCode?codeValue=NoiseFunctionArea",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"sys",
+								"enumCode"
+							],
+							"query": [
+								{
+									"key": "codeValue",
+									"value": "NoiseFunctionArea"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "10气域功能区类别",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/sys/enumCode?codeValue=AirFunctionArea",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"sys",
+								"enumCode"
+							],
+							"query": [
+								{
+									"key": "codeValue",
+									"value": "AirFunctionArea"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "11海域功能区类别",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/sys/enumCode?codeValue=AirFunctionArea",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"sys",
+								"enumCode"
+							],
+							"query": [
+								{
+									"key": "codeValue",
+									"value": "AirFunctionArea"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "12水源保护区类别",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/sys/enumCode?codeValue=AirFunctionArea",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"sys",
+								"enumCode"
+							],
+							"query": [
+								{
+									"key": "codeValue",
+									"value": "AirFunctionArea"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "13污水处理级别",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/sys/enumCode?codeValue=AirFunctionArea",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"sys",
+								"enumCode"
+							],
+							"query": [
+								{
+									"key": "codeValue",
+									"value": "AirFunctionArea"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "14数采仪类型",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/sys/enumCode?codeValue=DGIType",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"sys",
+								"enumCode"
+							],
+							"query": [
+								{
+									"key": "codeValue",
+									"value": "DGIType"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "15断面",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/sys/enumCode?codeValue=SectionCode",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"sys",
+								"enumCode"
+							],
+							"query": [
+								{
+									"key": "codeValue",
+									"value": "SectionCode"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "16标志牌安装形式",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/sys/enumCode?codeValue=FlagInstallForm",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"sys",
+								"enumCode"
+							],
+							"query": [
+								{
+									"key": "codeValue",
+									"value": "FlagInstallForm"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "17排放规律",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/sys/enumCode?codeValue=OutputRule",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"sys",
+								"enumCode"
+							],
+							"query": [
+								{
+									"key": "codeValue",
+									"value": "OutputRule"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "18运营商",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/sys/enumCode?codeValue=operator",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"sys",
+								"enumCode"
+							],
+							"query": [
+								{
+									"key": "codeValue",
+									"value": "operator"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "5298a17c-fd54-4aa5-800b-f311d14c8839",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "917d2351-47a3-47d6-a38a-394368a7c508",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "03安全措施模板管理",
+			"item": [
+				{
+					"name": "00行业类别下拉框",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "",
+						"description": "> 如果引用其他地方的接口，参数什么的没有变化，可以直接写明引用哪里的（必须属于同一个文档下）   \r\n> 如果引用其他地方的接口，参数不同，需要拷贝过来，修改说明   \r\n> 1、行业类别，数据字典下拉框，见接口：02数据字典，数据常量->01行业类别"
+					},
+					"response": []
+				},
+				{
+					"name": "01安全措施模板查询",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/sinoyd-wholeprocess/wholeprocess/safetyMeasuresTemplate?page=1&rows=15&workType=1&industryTypeId=1fcfbeb8-6cad-4d88-8a3d-8f116b3045d6&sort=orderNum-",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"sinoyd-wholeprocess",
+								"wholeprocess",
+								"safetyMeasuresTemplate"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1",
+									"description": "页面"
+								},
+								{
+									"key": "rows",
+									"value": "15",
+									"description": "每页记录条数"
+								},
+								{
+									"key": "workType",
+									"value": "1",
+									"description": "所属作业，下拉框单选（枚举：1动火作业、2进入受限空间、4高处作业、8吊装作业、16盲板抽堵、32动土作业、64断路作业、128临时用电、256其他）"
+								},
+								{
+									"key": "industryTypeId",
+									"value": "1fcfbeb8-6cad-4d88-8a3d-8f116b3045d6",
+									"description": "行业类别，下拉框单选，数据字典"
+								},
+								{
+									"key": "isExternal",
+									"value": "true",
+									"description": "是否属于外来方措施",
+									"disabled": true
+								},
+								{
+									"key": "sort",
+									"value": "orderNum-",
+									"description": "排序"
+								}
+							]
+						},
+						"description": "> 此处写一些业务逻辑及说明  \r\n# 1.业务逻辑  \r\n1. 返回数据示例及返回参数说明详见Examples   \r\n2. 安全措施模板是事先定义好的安全措施，在新增安全作业时，自动将设置了自动应用（isAutoApply=true）、所属作业类型（workType=对应的作业）、是否外来方措施（isExternal=true）的安全措施，写入本安全作业下，这些安全措施与安全措施模板中的没有关联关系。   \r\n3. 是否自动应用isAutoApply（true，false）；true的话，新增作业自动新增到此作业的安全措施下。   \r\n4. 是否外来方措施isExternal（true，false），true是外来方措施的话，新增作业时，勾选了有外来方，那么这种安全模板会自动新增到此作业的安全措施下。反之不自动新增。  \r\n5. 所属作业下拉框单选workType（1动火作业、2进入受限空间、4高处作业、8吊装作业、16盲板抽堵、32动土作业、64断路作业、128临时用电、256其他） \r\n6. 枚举EnumWorkType（1动火作业、2进入受限空间、4高处作业、8吊装作业、16盲板抽堵、32动土作业、64断路作业、128临时用电、256其他）  \r\n7. 行业类别，数据字典下拉框，见接口：02数据字典，数据常量->01行业类别"
+					},
+					"response": [
+						{
+							"name": "01安全措施模板查询",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/sinoyd-wholeprocess/wholeprocess/safetyMeasuresTemplate?page=1&rows=15&workType=1&industryTypeCodeId=1fcfbeb8-6cad-4d88-8a3d-8f116b3045d6&sort=orderNum-",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"sinoyd-wholeprocess",
+										"wholeprocess",
+										"safetyMeasuresTemplate"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1",
+											"description": "页面"
+										},
+										{
+											"key": "rows",
+											"value": "15",
+											"description": "每页记录条数"
+										},
+										{
+											"key": "workType",
+											"value": "1",
+											"description": "所属作业，下拉框单选（枚举：1动火作业、2进入受限空间、4高处作业、8吊装作业、16盲板抽堵、32动土作业、64断路作业、128临时用电、256其他）"
+										},
+										{
+											"key": "industryTypeCodeId",
+											"value": "1fcfbeb8-6cad-4d88-8a3d-8f116b3045d6",
+											"description": "行业类别，下拉框单选，数据字典"
+										},
+										{
+											"key": "sort",
+											"value": "orderNum-",
+											"description": "排序"
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{\r\n    \"success\":true,\r\n    \"code\":200,\r\n    \"msg\":\"操作成功\",\r\n    \"count\": 1,\r\n    \"data\":[{\r\n\t    \"id\":\"string 主键：d8dd8c8a-9494-4545-a732-238b72dd3307\",\r\n\t    \"workType\":\"int 所属作业单选（1动火作业、2进入受限空间、4高处作业、8吊装作业、16盲板抽堵、32动土作业、64断路作业、128临时用电、256其他）\",\r\n\t    \"measuresContent\":\"string 措施内容\",\r\n\t    \"orderNum\":\"int 排序值\",\r\n\t    \"isExternal\":\"bool 是否外来方措施（true，false），true是外来方措施的话，新增作业时，勾选了有外来方，那么这种安全模板会自动新增到此作业的安全措施下。反之不自动新增。\",\r\n\t    \"isAutoApply\":\"bool 是否自动应用（true，false）true的话，添加了作业自动关联到安全措施下\",\r\n\t    \"industryCodeId\":\"string 行业类别数据字典主键ID\",\r\n\t    \"industryCodeName\":\"string 行业类别数据字典主键ID对应的内容\"\r\n\t}]\r\n}"
+						}
+					]
+				},
+				{
+					"name": "02新增安全措施模板",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"workType\": 1,\n    \"measuresContent\": \"测试措施\",\n    \"orderNum\": 999,\n    \"isExternal\": 0,\n    \"isAutoApply\": 1,\n    \"industryTypeId\":\"1fcfbeb8-6cad-4d88-8a3d-8f116b3045d6\"\n}"
+						},
+						"url": "{{url}}/api/sinoyd-wholeprocess/wholeprocess/safetyMeasuresTemplate",
+						"description": "-------------此处写一些业务逻辑及说明-------------\r\n1、返回数据示例及返回参数说明详见Examples\r\n2、安全措施模板是事先定义好的安全措施，在新增安全作业时，自动将设置了自动应用（isAutoApply=true）、所属作业类型（workType=对应的作业）、是否外来方措施（isExternal=true）的安全措施，写入本安全作业下，这些安全措施与安全措施模板中的没有关联关系。\r\n3：是否自动应用isAutoApply（true，false）；true的话，新增作业自动新增到此作业的安全措施下。\r\n4：是否外来方措施isExternal（true，false），true是外来方措施的话，新增作业时，勾选了有外来方，那么这种安全模板会自动新增到此作业的安全措施下。反之不自动新增。\r\n5：所属作业下拉框单选workType（1动火作业、2进入受限空间、4高处作业、8吊装作业、16盲板抽堵、32动土作业、64断路作业、128临时用电、256其他）\r\n6：枚举EnumWorkType（1动火作业、2进入受限空间、4高处作业、8吊装作业、16盲板抽堵、32动土作业、64断路作业、128临时用电、256其他）\r\n7：行业类别，数据字典下拉框，见接口：02数据字典，数据常量->01行业类别"
+					},
+					"response": [
+						{
+							"name": "新增安全措施模板",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"workType\": 1,\n    \"measuresContent\": \"测试错误\",\n    \"orderNum\": 999,\n    \"isExternal\": 0,\n    \"isAutoApply\": 1\n}"
+								},
+								"url": "{{url}}/api/sinoyd-wholeprocess/wholeprocess/safetyMeasuresTemplate"
+							},
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{\r\n    \"success\":true,\r\n    \"code\":200,\r\n    \"msg\":\"操作成功\",\r\n    \"count\": 1,\r\n    \"data\":[{\r\n\t    \"id\":\"string 主键：d8dd8c8a-9494-4545-a732-238b72dd3307\",\r\n\t    \"workType\":\"int 所属作业单选（1动火作业、2进入受限空间、4高处作业、8吊装作业、16盲板抽堵、32动土作业、64断路作业、128临时用电、256其他）\",\r\n\t    \"measuresContent\":\"string 措施内容\",\r\n\t    \"orderNum\":\"int 排序值\",\r\n\t    \"isExternal\":\"bool 是否外来方措施（true，false），true是外来方措施的话，新增作业时，勾选了有外来方，那么这种安全模板会自动新增到此作业的安全措施下。反之不自动新增。\",\r\n\t    \"isAutoApply\":\"bool 是否自动应用（true，false）true的话，添加了作业自动关联到安全措施下\",\r\n\t    \"industryCodeId\":\"string 行业类别数据字典主键ID\",\r\n\t    \"industryCodeName\":\"string 行业类别数据字典主键ID对应的内容\"\r\n\t}]\r\n}"
+						}
+					]
+				},
+				{
+					"name": "03修改安全措施模板",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": \"d8dd8c8a-9494-4545-a732-238b72dd3307\",\n    \"workType\": 1,\n    \"measuresContent\": \"测试措施\",\n    \"orderNum\": 999,\n    \"isExternal\": 0,\n    \"isAutoApply\": 1,\n    \"industryTypeId\":\"1fcfbeb8-6cad-4d88-8a3d-8f116b3045d6\"\n}"
+						},
+						"url": "{{url}}/api/sinoyd-wholeprocess/wholeprocess/safetyMeasuresTemplate",
+						"description": "-------------此处写一些业务逻辑及说明-------------\r\n1、返回数据示例及返回参数说明详见Examples\r\n2、安全措施模板是事先定义好的安全措施，在新增安全作业时，自动将设置了自动应用（isAutoApply=true）、所属作业类型（workType=对应的作业）、是否外来方措施（isExternal=true）的安全措施，写入本安全作业下，这些安全措施与安全措施模板中的没有关联关系。\r\n3：是否自动应用isAutoApply（true，false）；true的话，新增作业自动新增到此作业的安全措施下。\r\n4：是否外来方措施isExternal（true，false），true是外来方措施的话，新增作业时，勾选了有外来方，那么这种安全模板会自动新增到此作业的安全措施下。反之不自动新增。\r\n5：所属作业下拉框单选workType（1动火作业、2进入受限空间、4高处作业、8吊装作业、16盲板抽堵、32动土作业、64断路作业、128临时用电、256其他）\r\n6：枚举EnumWorkType（1动火作业、2进入受限空间、4高处作业、8吊装作业、16盲板抽堵、32动土作业、64断路作业、128临时用电、256其他）\r\n7：行业类别，数据字典下拉框，见接口：02数据字典，数据常量->01行业类别"
+					},
+					"response": [
+						{
+							"name": "修改安全措施模板",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"id\": \"d8dd8c8a-9494-4545-a732-238b72dd3307\",\n    \"workType\": 1,\n    \"measuresContent\": \"测试措施\",\n    \"orderNum\": 999,\n    \"isExternal\": 0,\n    \"isAutoApply\": 1\n}"
+								},
+								"url": "{{url}}/api/sinoyd-wholeprocess/wholeprocess/safetyMeasuresTemplate"
+							},
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{\r\n    \"success\":true,\r\n    \"code\":200,\r\n    \"msg\":\"操作成功\",\r\n    \"count\": 1,\r\n    \"data\":[{\r\n\t    \"id\":\"string 主键：d8dd8c8a-9494-4545-a732-238b72dd3307\",\r\n\t    \"workType\":\"int 所属作业单选（1动火作业、2进入受限空间、4高处作业、8吊装作业、16盲板抽堵、32动土作业、64断路作业、128临时用电、256其他）\",\r\n\t    \"measuresContent\":\"string 措施内容\",\r\n\t    \"orderNum\":\"int 排序值\",\r\n\t    \"isExternal\":\"bool 是否外来方措施（true，false），true是外来方措施的话，新增作业时，勾选了有外来方，那么这种安全模板会自动新增到此作业的安全措施下。反之不自动新增。\",\r\n\t    \"isAutoApply\":\"bool 是否自动应用（true，false）true的话，添加了作业自动关联到安全措施下\",\r\n\t    \"industryCodeId\":\"string 行业类别数据字典主键ID\",\r\n\t    \"industryCodeName\":\"string 行业类别数据字典主键ID对应的内容\"\r\n\t}]\r\n}"
+						}
+					]
+				},
+				{
+					"name": "04删除安全措施模板",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n    \"d8dd8c8a-9494-4545-a732-238b72dd3307\",\n    \"af5f28c2-1dd4-488c-b8ad-b5849e1073e5\"\n]"
+						},
+						"url": "{{url}}/api/sinoyd-wholeprocess/wholeprocess/safetyMeasuresTemplate",
+						"description": "根据安全措施模板的主键数组删除"
+					},
+					"response": [
+						{
+							"name": "删除安全措施模板",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "[\n    \"d8dd8c8a-9494-4545-a732-238b72dd3307\",\n    \"af5f28c2-1dd4-488c-b8ad-b5849e1073e5\"\n]"
+								},
+								"url": "{{url}}/api/sinoyd-wholeprocess/wholeprocess/safetyMeasuresTemplate"
+							},
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{\r\n    \"success\":true,\r\n    \"code\":200,\r\n    \"msg\":\"操作成功\",\r\n    \"count\": 2,\r\n    \"data\":{\r\n\t}\r\n}"
+						}
+					]
+				},
+				{
+					"name": "05根据主键获得安全措施模板唯一的一条",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b5b480a0-ae17-44b8-8706-12042fc33e58",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJzaW5veWQiLCJsb2dpbklEIjoic2lub3lkIiwidXNlcklkIjoyLCJ1c2VyR3VpZCI6ImNmYjk3NDBkNmYyMjQ5MDRiN2M4MTdiYmEzODVhYWE1IiwidXNlck5hbWUiOiLmsZ_oi4_ov5zlpKciLCJvcmdHdWlkIjoiMjQ3ZjVhODE5MWVlNGI1N2JjOGFlNTNkMzFjZmY1NDUiLCJkZXB0R3VpZCI6ImVkN2ExZDQ5Zjc3MDQzNTRhODgyNTY1ZWQwYjA2NmY1IiwidW5pcXVlSWQiOiJzaW5veWQtMDc4YmEwYWQyM2NiNGNlYjkxMDQ5Y2YxZmRlZDVlZTYiLCJleHAiOjE1NTg0Mjk5MTF9.ZT_PrdRvtUA7Tw66u-6zIW8B1DogbcoIJjFmv9Xcg5P0cCJb8GdZGxjpoD5lTOL_Waa5Db9h7oAAJm5YpFi1qfm0COduC_yrybh-K9-288bMzRqVfMR5U6UHi3wDwXvi6ZHSY8I4XAyYDwOooL9cv5fk5q8AxD0h7T98aYgKJf0"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": "{{url}}/api/sinoyd-wholeprocess/wholeprocess/safetyMeasuresTemplate/d8dd8c8a-9494-4545-a732-238b72dd3307",
+						"description": "参数为安全措施模板的主键Id"
+					},
+					"response": [
+						{
+							"name": "根据主键获得安全措施模板唯一的一条",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJzaW5veWQiLCJsb2dpbklEIjoic2lub3lkIiwidXNlcklkIjoyLCJ1c2VyR3VpZCI6ImNmYjk3NDBkNmYyMjQ5MDRiN2M4MTdiYmEzODVhYWE1IiwidXNlck5hbWUiOiLmsZ_oi4_ov5zlpKciLCJvcmdHdWlkIjoiMjQ3ZjVhODE5MWVlNGI1N2JjOGFlNTNkMzFjZmY1NDUiLCJkZXB0R3VpZCI6ImVkN2ExZDQ5Zjc3MDQzNTRhODgyNTY1ZWQwYjA2NmY1IiwidW5pcXVlSWQiOiJzaW5veWQtMDc4YmEwYWQyM2NiNGNlYjkxMDQ5Y2YxZmRlZDVlZTYiLCJleHAiOjE1NTg0Mjk5MTF9.ZT_PrdRvtUA7Tw66u-6zIW8B1DogbcoIJjFmv9Xcg5P0cCJb8GdZGxjpoD5lTOL_Waa5Db9h7oAAJm5YpFi1qfm0COduC_yrybh-K9-288bMzRqVfMR5U6UHi3wDwXvi6ZHSY8I4XAyYDwOooL9cv5fk5q8AxD0h7T98aYgKJf0"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"url": "{{url}}/api/sinoyd-wholeprocess/wholeprocess/safetyMeasuresTemplate/d8dd8c8a-9494-4545-a732-238b72dd3307"
+							},
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{\r\n    \"success\":true,\r\n    \"code\":200,\r\n    \"msg\":\"操作成功\",\r\n    \"count\": 1,\r\n    \"data\":[{\r\n\t    \"id\":\"string 主键：d8dd8c8a-9494-4545-a732-238b72dd3307\",\r\n\t    \"workType\":\"int 所属作业单选（1动火作业、2进入受限空间、4高处作业、8吊装作业、16盲板抽堵、32动土作业、64断路作业、128临时用电、256其他）\",\r\n\t    \"measuresContent\":\"string 措施内容\",\r\n\t    \"orderNum\":\"int 排序值\",\r\n\t    \"isExternal\":\"bool 是否外来方措施（true，false），true是外来方措施的话，新增作业时，勾选了有外来方，那么这种安全模板会自动新增到此作业的安全措施下。反之不自动新增。\",\r\n\t    \"isAutoApply\":\"bool 是否自动应用（true，false）true的话，添加了作业自动关联到安全措施下\",\r\n\t    \"industryCodeId\":\"string 行业类别数据字典主键ID\",\r\n\t    \"industryCodeName\":\"string 行业类别数据字典主键ID对应的内容\"\r\n\t}]\r\n}"
+						}
+					]
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "61a16612-4e31-4c10-b384-5ca2d9c92e59",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "11dd80d7-a9de-45de-9db7-4814d412e281",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "04作业管理",
+			"item": [
+				{
+					"name": "00新增作业安全措施（模板新增）",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/sinoyd-wholeprocess/wholeprocess/safetyMeasuresTemplate?page=1&rows=15&workType=1&industryTypeId=1fcfbeb8-6cad-4d88-8a3d-8f116b3045d6&isExternal=true&sort=orderNum-",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"sinoyd-wholeprocess",
+								"wholeprocess",
+								"safetyMeasuresTemplate"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1",
+									"description": "页面"
+								},
+								{
+									"key": "rows",
+									"value": "15",
+									"description": "每页记录条数"
+								},
+								{
+									"key": "workType",
+									"value": "1",
+									"description": "所属作业，下拉框单选（枚举：1动火作业、2进入受限空间、4高处作业、8吊装作业、16盲板抽堵、32动土作业、64断路作业、128临时用电、256其他）"
+								},
+								{
+									"key": "industryTypeId",
+									"value": "1fcfbeb8-6cad-4d88-8a3d-8f116b3045d6",
+									"description": "行业类别，下拉框单选，数据字典"
+								},
+								{
+									"key": "isExternal",
+									"value": "true",
+									"description": "是否属于外来方措施"
+								},
+								{
+									"key": "sort",
+									"value": "orderNum-",
+									"description": "排序"
+								}
+							]
+						},
+						"description": ">  此处写一些业务逻辑及说明  \r\n\r\n# 1.业务逻辑  \r\n+ 本接口即：03安全措施模板管理->01安全措施模板查询，参数isExternal不同  \r\n+ 模板新增，即在本查询条件下，勾选新增。  \r\n\r\n# 2.枚举说明  \r\n|名称|说明|值|\r\n|-|-|-|\r\n|workType|所属作业|1动火作业、2进入受限空间、4高处作业、8吊装作业、16盲板抽堵、32动土作业、64断路作业、128临时用电、256其他  \r\n\r\n# 3.返回格式说明 \r\n``` json\r\n        {\r\n            \"id\": \"d8dd8c8a-9494-4545-a732-238b72dd3307\", // 主键\r\n            \"workType\": 1, // 所属作业枚举，说明如上\r\n            \"measuresContent\": \"\", // 措施内容\r\n            \"orderNum\": 0, // 排序值\r\n            \"isExternal\": true, // 是否外来方措施（true，false），true是外来方措施的话，新增作业时，勾选了有外来方，那么这种安全模板会自动新增到此作业的安全措施下。反之不自动新增\r\n            \"isAutoApply\": false, // 是否自动应用（true，false）true的话，添加了作业自动关联到安全措施下\r\n            \"industryCodeId\": \"d8dd8c8a-9494-4545-a732-238b72dd3307\", // 行业类别数据字典主键ID\r\n            \"industryCodeName\": \"钢铁锻造\" // 行业类别数据字典主键ID对应的内容\r\n        }\r\n```"
+					},
+					"response": [
+						{
+							"name": "01安全措施模板查询",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/sinoyd-wholeprocess/wholeprocess/safetyMeasuresTemplate?page=1&rows=15&workType=1&industryTypeCodeId=1fcfbeb8-6cad-4d88-8a3d-8f116b3045d6&sort=orderNum-",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"sinoyd-wholeprocess",
+										"wholeprocess",
+										"safetyMeasuresTemplate"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1",
+											"description": "页面"
+										},
+										{
+											"key": "rows",
+											"value": "15",
+											"description": "每页记录条数"
+										},
+										{
+											"key": "workType",
+											"value": "1",
+											"description": "所属作业，下拉框单选（枚举：1动火作业、2进入受限空间、4高处作业、8吊装作业、16盲板抽堵、32动土作业、64断路作业、128临时用电、256其他）"
+										},
+										{
+											"key": "industryTypeCodeId",
+											"value": "1fcfbeb8-6cad-4d88-8a3d-8f116b3045d6",
+											"description": "行业类别，下拉框单选，数据字典"
+										},
+										{
+											"key": "sort",
+											"value": "orderNum-",
+											"description": "排序"
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{\r\n    \"success\":true,\r\n    \"code\":200,\r\n    \"msg\":\"操作成功\",\r\n    \"count\": 1,\r\n    \"data\":[{\r\n\t    \"id\":\"string 主键：d8dd8c8a-9494-4545-a732-238b72dd3307\",\r\n\t    \"workType\":\"int 所属作业单选（1动火作业、2进入受限空间、4高处作业、8吊装作业、16盲板抽堵、32动土作业、64断路作业、128临时用电、256其他）\",\r\n\t    \"measuresContent\":\"string 措施内容\",\r\n\t    \"orderNum\":\"int 排序值\",\r\n\t    \"isExternal\":\"bool 是否外来方措施（true，false），true是外来方措施的话，新增作业时，勾选了有外来方，那么这种安全模板会自动新增到此作业的安全措施下。反之不自动新增。\",\r\n\t    \"isAutoApply\":\"bool 是否自动应用（true，false）true的话，添加了作业自动关联到安全措施下\",\r\n\t    \"industryCodeId\":\"string 行业类别数据字典主键ID\",\r\n\t    \"industryCodeName\":\"string 行业类别数据字典主键ID对应的内容\"\r\n\t}]\r\n}"
+						}
+					]
+				},
+				{
+					"name": "01其他接口略...",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": ""
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "05检测因子.net实例",
+			"item": [
+				{
+					"name": "01分页查询检测因子",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/Demo/api/V1/CFG/AnalyzeItem?page=1&rows=1&name=污水",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"Demo",
+								"api",
+								"V1",
+								"CFG",
+								"AnalyzeItem"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1",
+									"description": "页码"
+								},
+								{
+									"key": "rows",
+									"value": "1",
+									"description": "每页记录数"
+								},
+								{
+									"key": "name",
+									"value": "污水",
+									"description": "检测因子名称"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "01分页查询检测因子",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost/DemoRestful/api/V1/CFG/AnalyzeItem?page=1&rows=1&name=污水",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"DemoRestful",
+										"api",
+										"V1",
+										"CFG",
+										"AnalyzeItem"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1",
+											"description": "页码"
+										},
+										{
+											"key": "rows",
+											"value": "1",
+											"description": "每页记录数"
+										},
+										{
+											"key": "name",
+											"value": "污水",
+											"description": "检测因子名称"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "private"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html;charset=utf-8"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Server",
+									"value": "Microsoft-IIS/7.5"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "POST,GET,DELETE,PUT,OPTIONS"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "*"
+								},
+								{
+									"key": "X-AspNet-Version",
+									"value": "4.0.30319"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "ASP.NET"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 29 Oct 2020 07:45:06 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"msg\": null,\n    \"total\": 1,\n    \"rows\": [\n        {\n            \"ID\": 0,\n            \"RowGuid\": \"67d4fbfa-bde3-4601-9429-428f02708b8c\",\n            \"RowStatus\": 1,\n            \"Test\": \"污水\",\n            \"TestCode\": \"w00000\",\n            \"TestMothed\": \"抽样测试\",\n            \"OnlineCycle\": 1,\n            \"OnlineNum\": 1,\n            \"AddDate\": \"2020-10-29 15:38:53\",\n            \"AddUserGuid\": \"00000000-0000-0000-0000-000000000000\",\n            \"AddUserName\": null,\n            \"UpdateDate\": \"2020-10-29 15:38:53\",\n            \"UpdateUserGuid\": \"00000000-0000-0000-0000-000000000000\",\n            \"UpdateUserName\": null,\n            \"Remark\": null\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "02新增检测因子",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Test\":\"污水\",\r\n    \"TestCode\":\"w00000\",\r\n    \"TestMothed\":\"抽样测试\",\r\n    \"OnlineCycle\":1,\r\n    \"OnlineNum\":1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost/DemoRestful/api/V1/CFG/AnalyzeItemCreate",
+						"description": "``` 参数说明\r\n{\r\n    \"Test\":\"污水\",//检测因子名称\r\n    \"TestCode\":\"w00000\",//因子编号\r\n    \"TestMothed\":\"抽样测试\",//检测方法\r\n    \"OnlineCycle\":1,//在线应传周期(小时)\r\n    \"OnlineNum\":1//周期应传次数\r\n}\r\n```"
+					},
+					"response": [
+						{
+							"name": "02新增检测因子",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Test\":\"污水\",\r\n    \"TestCode\":\"w00000\",\r\n    \"TestMothed\":\"抽样测试\",\r\n    \"OnlineCycle\":1,\r\n    \"OnlineNum\":1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost/DemoRestful/api/V1/CFG/AnalyzeItemCreate"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "private"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html;charset=utf-8"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Server",
+									"value": "Microsoft-IIS/7.5"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "POST,GET,DELETE,PUT,OPTIONS"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "*"
+								},
+								{
+									"key": "X-AspNet-Version",
+									"value": "4.0.30319"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "ASP.NET"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 29 Oct 2020 07:38:53 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\"success\":true,\"msg\":null,\"total\":0,\"rows\":null}"
+						}
+					]
+				},
+				{
+					"name": "03修改检测因子",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"RowGuid\":\"67d4fbfa-bde3-4601-9429-428f02708b8c\",\r\n    \"Test\":\"污水11\",\r\n    \"TestCode\":\"w00001\",\r\n    \"TestMothed\":\"抽样测试222\",\r\n    \"OnlineCycle\":2,\r\n    \"OnlineNum\":2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost/DemoRestful/api/V1/CFG/AnalyzeItemUpdate",
+						"description": "``` 参数说明\r\n{\r\n    \"RowGuid\":\"67d4fbfa-bde3-4601-9429-428f02708b8c\",//主键\r\n    \"Test\":\"污水\",//检测因子名称\r\n    \"TestCode\":\"w00000\",//因子编号\r\n    \"TestMothed\":\"抽样测试\",//检测方法\r\n    \"OnlineCycle\":1,//在线应传周期(小时)\r\n    \"OnlineNum\":1//周期应传次数\r\n}\r\n```"
+					},
+					"response": [
+						{
+							"name": "03修改检测因子",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"RowGuid\":\"67d4fbfa-bde3-4601-9429-428f02708b8c\",\r\n    \"Test\":\"污水11\",\r\n    \"TestCode\":\"w00001\",\r\n    \"TestMothed\":\"抽样测试222\",\r\n    \"OnlineCycle\":2,\r\n    \"OnlineNum\":2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost/DemoRestful/api/V1/CFG/AnalyzeItemUpdate"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "private"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html;charset=utf-8"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Server",
+									"value": "Microsoft-IIS/7.5"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "POST,GET,DELETE,PUT,OPTIONS"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "*"
+								},
+								{
+									"key": "X-AspNet-Version",
+									"value": "4.0.30319"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "ASP.NET"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 29 Oct 2020 07:48:13 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\"success\":true,\"msg\":null,\"total\":0,\"rows\":null}"
+						}
+					]
+				},
+				{
+					"name": "04删除检测因子",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "RowGuids",
+									"value": "67237f31-4d07-4e17-bed4-9be6e0bf6944,67d4fbfa-bde3-4601-9429-428f02708b8c",
+									"type": "text"
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost/Demo/api/V1/CFG/AnalyzeItemDelete"
+					},
+					"response": [
+						{
+							"name": "04删除检测因子",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "RowGuids",
+											"value": "67237f31-4d07-4e17-bed4-9be6e0bf6944,67d4fbfa-bde3-4601-9429-428f02708b8c",
+											"type": "text"
+										}
+									],
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost/DemoRestful/api/V1/CFG/AnalyzeItemDelete"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "private"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html;charset=utf-8"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Server",
+									"value": "Microsoft-IIS/7.5"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "POST,GET,DELETE,PUT,OPTIONS"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "*"
+								},
+								{
+									"key": "X-AspNet-Version",
+									"value": "4.0.30319"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "ASP.NET"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 29 Oct 2020 07:56:10 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\"success\":true,\"msg\":null,\"total\":0,\"rows\":null}"
+						}
+					]
+				},
+				{
+					"name": "05查询mongodb小时数据",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "beginTime",
+									"value": "2020-08-28",
+									"type": "text"
+								},
+								{
+									"key": "endTime",
+									"value": "2020-08-29",
+									"type": "text"
+								}
+							]
+						},
+						"url": "http://localhost/Demo/api/V1/CFG/GetHourData"
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "03caf664-94fd-4ae4-abc3-cd6fd208f799",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "de347cc6-f3bd-4d5e-a511-290fdefc64ae",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "06JAVA实例",
+			"item": [
+				{
+					"name": "登录获得token接口",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "90259927-5028-4817-9879-13387ef96bc7",
+								"exec": [
+									"var data = JSON.parse(responseBody);",
+									"if(data.data.token){",
+									"    tests[\"Body has token\"] = true;",
+									"    postman.setEnvironmentVariable(\"token\",data.data.token);",
+									"}else{",
+									"    tests[\"Body has token\"] = false;",
+									"}",
+									"console.log(pm.variables.get(\"token\"));"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"uid\":\"lvNIqPy0iSpM42mIDx1Zcg==\",\"pid\":\"3KQEBIfRSCTH53gjb9gvmw==\"}"
+						},
+						"url": "http://192.168.11.65:9090/api/proxy/auth/login"
+					},
+					"response": []
+				},
+				{
+					"name": "新增学生",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJzdXBlcmFkbWluIiwiaXNzIjoiZnJhbWUiLCJ1aWkiOjEsInVpZCI6ImVkN2NhMGM4OTg4YTQ1ZDViNmEzMWE3ZjRhM2E1ZjY2IiwidW4iOiLotoXnuqfnrqHnkIblkZgiLCJjcGkiOiIyNDdmNWE4MTkxZWU0YjU3YmM4YWU1M2QzMWNmZjU0NSIsInVkaSI6ImVkN2ExZDQ5Zjc3MDQzNTRhODgyNTY1ZWQwYjA2NmY1IiwianRpIjoic3VwZXJhZG1pbi0xNjA1NjIwNTI2IiwiZXhwIjoxNjA1NjIwNTI2fQ.ZG6HdgWXWxebNu6jbwQLJ6lVZGU5eZcfkhEJiPBt9MZTl4Dwc6L8WiXTTZOZW0yccJyKMuEHrQ64ziBVXhUDsNIIlu4MJE4m0_5a_SuYX70Suf4NHUWUkyEDJPJWOx6eWYKeTjO1tpOLLZr23Dw39CzBLm1VnpBJAvPTX1CJQlo"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n    \"name\":\"王小\",\r\n    \"sex\":1,\r\n    \"age\":15,\r\n    \"birthday\":\"2002-01-01 11:00:00\",\r\n    \"orderNum\":999,\r\n    \"studentTypeId\":\"b3c9f83c2135438697a1d5b7eaee1201\"\r\n    },{\r\n    \"name\":\"杜一\",\r\n    \"sex\":1,\r\n    \"age\":16,\r\n    \"birthday\":\"2003-08-01 11:00:00\",\r\n    \"orderNum\":999,\r\n     \"studentTypeId\":\"e7cd483a13b5422eb0335996b93f46c5\"\r\n    }\r\n]\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:9511/api/demo/students",
+						"description": "``` 参数说明\r\n[{\r\n    \"name\":\"张三\",//姓名\r\n    \"sex\":1,//性别(1：男、2：女)\r\n    \"age\":18,//年龄\r\n    \"birthday\":\"2000-09-10 12:12:00\",//生日\r\n    \"orderNum\":999, //排序（值越大显示靠前）\r\n    \"studentTypeId\":\"b3c9f83c2135438697a1d5b7eaee1201\"//学生类型（数据字典）\r\n}]\r\n```"
+					},
+					"response": [
+						{
+							"name": "新增学生",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJzdXBlcmFkbWluIiwiaXNzIjoiZnJhbWUiLCJ1aWkiOjEsInVpZCI6ImVkN2NhMGM4OTg4YTQ1ZDViNmEzMWE3ZjRhM2E1ZjY2IiwidW4iOiLotoXnuqfnrqHnkIblkZgiLCJjcGkiOiIyNDdmNWE4MTkxZWU0YjU3YmM4YWU1M2QzMWNmZjU0NSIsInVkaSI6ImVkN2ExZDQ5Zjc3MDQzNTRhODgyNTY1ZWQwYjA2NmY1IiwianRpIjoic3VwZXJhZG1pbi0xNjA1NTgyNjU2IiwiZXhwIjoxNjA1NTgyNjU2fQ.wsKSbeQ1LhM5Aqnhl4RdYdRYSRdQJW1s2t5vzbqlIGjm_C_qIAI22Zpol75lkOAhv_aZy8CGUnFDpU-BW4BNy0RIRDZaz-7SoiIwpqKw2wNvEh9cZJZnPvqxr_h9pdxce5llvXTNj7UCH2-Zpq6uDVehEH1iJ8RLNEfHaUozYUw"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "[{\r\n    \"name\":\"李四\",\r\n    \"sex\":1,\r\n    \"age\":18,\r\n    \"birthday\":\"2000-09-10 12:12:00\",\r\n    \"orderNum\":999\r\n}]\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:9511/api/demo/students"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Application-Context",
+									"value": "sinoyd-demo:9511"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 17 Nov 2020 01:08:49 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"code\": 200,\n    \"msg\": \"操作成功\",\n    \"count\": 1,\n    \"data\": [\n        {\n            \"id\": \"e4b36ab8-af4b-483f-ab0a-26c53013de40\",\n            \"name\": \"李四\",\n            \"sex\": 1,\n            \"age\": 18,\n            \"birthday\": \"2000-09-10 12:12:00\",\n            \"orderNum\": 999,\n            \"createDate\": \"2020-11-17 09:08:49\",\n            \"creator\": \"ed7ca0c8988a45d5b6a31a7f4a3a5f66\",\n            \"isDeleted\": null\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "分页查询学生",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJzdXBlcmFkbWluIiwiaXNzIjoiZnJhbWUiLCJ1aWkiOjEsInVpZCI6ImVkN2NhMGM4OTg4YTQ1ZDViNmEzMWE3ZjRhM2E1ZjY2IiwidW4iOiLotoXnuqfnrqHnkIblkZgiLCJjcGkiOiIyNDdmNWE4MTkxZWU0YjU3YmM4YWU1M2QzMWNmZjU0NSIsInVkaSI6ImVkN2ExZDQ5Zjc3MDQzNTRhODgyNTY1ZWQwYjA2NmY1IiwianRpIjoic3VwZXJhZG1pbi0xNjA1NjE3NzczIiwiZXhwIjoxNjA1NjE3NzczfQ.kdL-i6NRQ7hsf_w13ayNgjp72KTGoj4AA6vlBSIfkFKDLj_JW9SsgI3RLgGZnVmhfee3khWreOZkcHJFDXULdHpM9Lp4Oz05ug9hm163e33m9glzLWWjxPY17j-j1I4rbxBYy7e95vgFJitJitO6R6vy43FdROQDy2sbcaDMaLQ"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:9511/api/demo/students?page=1&rows=20&startTime=1994-01-01&endTime=2004-12-31&sort=birthday-,name",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9511",
+							"path": [
+								"api",
+								"demo",
+								"students"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1",
+									"description": "页码"
+								},
+								{
+									"key": "rows",
+									"value": "20",
+									"description": "每页记录数"
+								},
+								{
+									"key": "name",
+									"value": "李四",
+									"description": "学生姓名",
+									"disabled": true
+								},
+								{
+									"key": "startTime",
+									"value": "1994-01-01",
+									"description": "查询生日区间（开始）"
+								},
+								{
+									"key": "endTime",
+									"value": "2004-12-31",
+									"description": "查询生日区间（结束）"
+								},
+								{
+									"key": "sort",
+									"value": "birthday-,name",
+									"description": "排序"
+								}
+							]
+						},
+						"description": "``` 参数说明\r\n[{\r\n    \"name\":\"张三\",//姓名\r\n    \"sex\":1,//性别(1：男、2：女)\r\n    \"age\":18,//年龄\r\n    \"birthday\":\"2000-09-10 12:12:00\",//生日\r\n    \"orderNum\":999 //排序（值越大显示靠前）\r\n}]\r\n```"
+					},
+					"response": [
+						{
+							"name": "分页查询学生",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJzdXBlcmFkbWluIiwiaXNzIjoiZnJhbWUiLCJ1aWkiOjEsInVpZCI6ImVkN2NhMGM4OTg4YTQ1ZDViNmEzMWE3ZjRhM2E1ZjY2IiwidW4iOiLotoXnuqfnrqHnkIblkZgiLCJjcGkiOiIyNDdmNWE4MTkxZWU0YjU3YmM4YWU1M2QzMWNmZjU0NSIsInVkaSI6ImVkN2ExZDQ5Zjc3MDQzNTRhODgyNTY1ZWQwYjA2NmY1IiwianRpIjoic3VwZXJhZG1pbi0xNjA1NTk4NzAxIiwiZXhwIjoxNjA1NTk4NzAxfQ.zpet4u3ar1hWGdTdoPXOooS-YKbz0K2DyvfqMTn1QGqqWYlfHy-5FulKyhBhN0xWPEag6JA9s1XuVUZGsIYuLbOfZoYcR0dvXtTyZk-T3CVnc0oXmcWocRYOKwEd7Dsm9uBhdhnvfzVab2eBIRwDaxJ6IAoej59GueS3Zqw2Los"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:9511/api/demo/students?page=1&rows=20&startTime=1994-01-01&endTime=2004-12-31&sort=birthday-,name",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9511",
+									"path": [
+										"api",
+										"demo",
+										"students"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1",
+											"description": "页码"
+										},
+										{
+											"key": "rows",
+											"value": "20",
+											"description": "每页记录数"
+										},
+										{
+											"key": "name",
+											"value": "李四",
+											"description": "学生姓名",
+											"disabled": true
+										},
+										{
+											"key": "startTime",
+											"value": "1994-01-01",
+											"description": "查询生日区间（开始）"
+										},
+										{
+											"key": "endTime",
+											"value": "2004-12-31",
+											"description": "查询生日区间（结束）"
+										},
+										{
+											"key": "sort",
+											"value": "birthday-,name",
+											"description": "排序"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Application-Context",
+									"value": "sinoyd-demo:9511"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 17 Nov 2020 05:52:45 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"code\": 200,\n    \"msg\": \"操作成功\",\n    \"count\": 3,\n    \"data\": [\n        {\n            \"id\": \"e4b36ab8-af4b-483f-ab0a-26c53013de40\",\n            \"name\": \"李四\",\n            \"sex\": 1,\n            \"age\": 18,\n            \"birthday\": \"2000-09-10 12:12:00\",\n            \"orderNum\": 999,\n            \"isDeleted\": false,\n            \"creator\": \"ed7ca0c8988a45d5b6a31a7f4a3a5f66\",\n            \"createDate\": \"2020-11-17 09:08:49\"\n        },\n        {\n            \"id\": \"9d04b391-4c81-4e85-8d98-32a149c549d5\",\n            \"name\": \"王冰\",\n            \"sex\": 1,\n            \"age\": 26,\n            \"birthday\": \"1994-03-10 01:12:00\",\n            \"orderNum\": 999,\n            \"isDeleted\": false,\n            \"creator\": null,\n            \"createDate\": null\n        },\n        {\n            \"id\": \"69482d9c-fee1-4fbb-9760-e449c7febad1\",\n            \"name\": \"王五\",\n            \"sex\": 1,\n            \"age\": 26,\n            \"birthday\": \"1994-03-10 01:12:00\",\n            \"orderNum\": 999,\n            \"isDeleted\": false,\n            \"creator\": null,\n            \"createDate\": null\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "修改学生",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJzdXBlcmFkbWluIiwiaXNzIjoiZnJhbWUiLCJ1aWkiOjEsInVpZCI6ImVkN2NhMGM4OTg4YTQ1ZDViNmEzMWE3ZjRhM2E1ZjY2IiwidW4iOiLotoXnuqfnrqHnkIblkZgiLCJjcGkiOiIyNDdmNWE4MTkxZWU0YjU3YmM4YWU1M2QzMWNmZjU0NSIsInVkaSI6ImVkN2ExZDQ5Zjc3MDQzNTRhODgyNTY1ZWQwYjA2NmY1IiwianRpIjoic3VwZXJhZG1pbi0xNjA1NjIwNTI2IiwiZXhwIjoxNjA1NjIwNTI2fQ.ZG6HdgWXWxebNu6jbwQLJ6lVZGU5eZcfkhEJiPBt9MZTl4Dwc6L8WiXTTZOZW0yccJyKMuEHrQ64ziBVXhUDsNIIlu4MJE4m0_5a_SuYX70Suf4NHUWUkyEDJPJWOx6eWYKeTjO1tpOLLZr23Dw39CzBLm1VnpBJAvPTX1CJQlo"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"f445f34d-2478-40ad-a8fd-851aa11d1822\",\r\n    \"name\":\"王小小\",\r\n    \"sex\":1,\r\n    \"age\":15,\r\n    \"birthday\":\"1994-03-10 01:12:00\",\r\n    \"orderNum\":66,\r\n    \"studentTypeId\":\"b3c9f83c2135438697a1d5b7eaee1201\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:9511/api/demo/students",
+						"description": "``` 参数说明\r\n[{\r\n    \"name\":\"张三\",//姓名\r\n    \"sex\":1,//性别(1：男、2：女)\r\n    \"age\":18,//年龄\r\n    \"birthday\":\"2000-09-10 12:12:00\",//生日\r\n    \"orderNum\":999, //排序（值越大显示靠前）\r\n    \"studentTypeId\":\"b3c9f83c2135438697a1d5b7eaee1201\"//学生类型（数据字典）\r\n}]\r\n```"
+					},
+					"response": []
+				},
+				{
+					"name": "删除学生",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJzdXBlcmFkbWluIiwiaXNzIjoiZnJhbWUiLCJ1aWkiOjEsInVpZCI6ImVkN2NhMGM4OTg4YTQ1ZDViNmEzMWE3ZjRhM2E1ZjY2IiwidW4iOiLotoXnuqfnrqHnkIblkZgiLCJjcGkiOiIyNDdmNWE4MTkxZWU0YjU3YmM4YWU1M2QzMWNmZjU0NSIsInVkaSI6ImVkN2ExZDQ5Zjc3MDQzNTRhODgyNTY1ZWQwYjA2NmY1IiwianRpIjoic3VwZXJhZG1pbi0xNjA1NTk4NzAxIiwiZXhwIjoxNjA1NTk4NzAxfQ.zpet4u3ar1hWGdTdoPXOooS-YKbz0K2DyvfqMTn1QGqqWYlfHy-5FulKyhBhN0xWPEag6JA9s1XuVUZGsIYuLbOfZoYcR0dvXtTyZk-T3CVnc0oXmcWocRYOKwEd7Dsm9uBhdhnvfzVab2eBIRwDaxJ6IAoej59GueS3Zqw2Los",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    \"69482d9c-fee1-4fbb-9760-e449c7febad1\",\r\n    \"e4d1426a-2ed9-4ac9-88b4-6870155be3a2\"\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:9511/api/demo/students",
+						"description": "逻辑删除，假删\r\n传入主键集合"
+					},
+					"response": []
+				},
+				{
+					"name": "新增科目",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJzdXBlcmFkbWluIiwiaXNzIjoiZnJhbWUiLCJ1aWkiOjEsInVpZCI6ImVkN2NhMGM4OTg4YTQ1ZDViNmEzMWE3ZjRhM2E1ZjY2IiwidW4iOiLotoXnuqfnrqHnkIblkZgiLCJjcGkiOiIyNDdmNWE4MTkxZWU0YjU3YmM4YWU1M2QzMWNmZjU0NSIsInVkaSI6ImVkN2ExZDQ5Zjc3MDQzNTRhODgyNTY1ZWQwYjA2NmY1IiwianRpIjoic3VwZXJhZG1pbi0xNjA1NTk4NzAxIiwiZXhwIjoxNjA1NTk4NzAxfQ.zpet4u3ar1hWGdTdoPXOooS-YKbz0K2DyvfqMTn1QGqqWYlfHy-5FulKyhBhN0xWPEag6JA9s1XuVUZGsIYuLbOfZoYcR0dvXtTyZk-T3CVnc0oXmcWocRYOKwEd7Dsm9uBhdhnvfzVab2eBIRwDaxJ6IAoej59GueS3Zqw2Los",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"name\":\"语文\",\r\n        \"orderNum\":1\r\n    },\r\n    {\r\n        \"name\":\"数学\",\r\n        \"orderNum\":2\r\n    },\r\n    {\r\n        \"name\":\"英语\",\r\n        \"orderNum\":3\r\n    }\r\n\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:9511/api/demo/subjects"
+					},
+					"response": [
+						{
+							"name": "新增科目",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJzdXBlcmFkbWluIiwiaXNzIjoiZnJhbWUiLCJ1aWkiOjEsInVpZCI6ImVkN2NhMGM4OTg4YTQ1ZDViNmEzMWE3ZjRhM2E1ZjY2IiwidW4iOiLotoXnuqfnrqHnkIblkZgiLCJjcGkiOiIyNDdmNWE4MTkxZWU0YjU3YmM4YWU1M2QzMWNmZjU0NSIsInVkaSI6ImVkN2ExZDQ5Zjc3MDQzNTRhODgyNTY1ZWQwYjA2NmY1IiwianRpIjoic3VwZXJhZG1pbi0xNjA1NTk4NzAxIiwiZXhwIjoxNjA1NTk4NzAxfQ.zpet4u3ar1hWGdTdoPXOooS-YKbz0K2DyvfqMTn1QGqqWYlfHy-5FulKyhBhN0xWPEag6JA9s1XuVUZGsIYuLbOfZoYcR0dvXtTyZk-T3CVnc0oXmcWocRYOKwEd7Dsm9uBhdhnvfzVab2eBIRwDaxJ6IAoej59GueS3Zqw2Los",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "[\r\n    {\r\n        \"name\":\"语文\",\r\n        \"orderNum\":1\r\n    },\r\n    {\r\n        \"name\":\"数学\",\r\n        \"orderNum\":2\r\n    },\r\n    {\r\n        \"name\":\"英语\",\r\n        \"orderNum\":3\r\n    }\r\n\r\n]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:9511/api/demo/subjects"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Application-Context",
+									"value": "sinoyd-demo:9511"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 17 Nov 2020 06:02:11 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"code\": 200,\n    \"msg\": \"操作成功\",\n    \"count\": 3,\n    \"data\": [\n        {\n            \"id\": \"cd5e3b82-f213-4ce6-8a38-cc710198e9dd\",\n            \"name\": \"语文\",\n            \"orderNum\": 1,\n            \"isDeleted\": false,\n            \"createDate\": \"2020-11-17 14:02:11\",\n            \"creator\": \"ed7ca0c8988a45d5b6a31a7f4a3a5f66\"\n        },\n        {\n            \"id\": \"0c4f1d1b-0972-4077-864b-53aee6a4b63b\",\n            \"name\": \"数学\",\n            \"orderNum\": 2,\n            \"isDeleted\": false,\n            \"createDate\": \"2020-11-17 14:02:11\",\n            \"creator\": \"ed7ca0c8988a45d5b6a31a7f4a3a5f66\"\n        },\n        {\n            \"id\": \"a280430d-152d-493a-9d93-7c2b0fa31de2\",\n            \"name\": \"英语\",\n            \"orderNum\": 3,\n            \"isDeleted\": false,\n            \"createDate\": \"2020-11-17 14:02:11\",\n            \"creator\": \"ed7ca0c8988a45d5b6a31a7f4a3a5f66\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "新增成绩",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJzdXBlcmFkbWluIiwiaXNzIjoiZnJhbWUiLCJ1aWkiOjEsInVpZCI6ImVkN2NhMGM4OTg4YTQ1ZDViNmEzMWE3ZjRhM2E1ZjY2IiwidW4iOiLotoXnuqfnrqHnkIblkZgiLCJjcGkiOiIyNDdmNWE4MTkxZWU0YjU3YmM4YWU1M2QzMWNmZjU0NSIsInVkaSI6ImVkN2ExZDQ5Zjc3MDQzNTRhODgyNTY1ZWQwYjA2NmY1IiwianRpIjoic3VwZXJhZG1pbi0xNjA1NTk4NzAxIiwiZXhwIjoxNjA1NTk4NzAxfQ.zpet4u3ar1hWGdTdoPXOooS-YKbz0K2DyvfqMTn1QGqqWYlfHy-5FulKyhBhN0xWPEag6JA9s1XuVUZGsIYuLbOfZoYcR0dvXtTyZk-T3CVnc0oXmcWocRYOKwEd7Dsm9uBhdhnvfzVab2eBIRwDaxJ6IAoej59GueS3Zqw2Los",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"studentId\":\"69482d9c-fee1-4fbb-9760-e449c7febad1\",\r\n        \"subjectId\":\"0c4f1d1b-0972-4077-864b-53aee6a4b63b\",\r\n        \"testScore\":89.5\r\n    },\r\n     {\r\n        \"studentId\":\"69482d9c-fee1-4fbb-9760-e449c7febad1\",\r\n        \"subjectId\":\"a280430d-152d-493a-9d93-7c2b0fa31de2\",\r\n        \"testScore\":100\r\n    },\r\n     {\r\n        \"studentId\":\"69482d9c-fee1-4fbb-9760-e449c7febad1\",\r\n        \"subjectId\":\"cd5e3b82-f213-4ce6-8a38-cc710198e9dd\",\r\n        \"testScore\":90\r\n    },\r\n     {\r\n        \"studentId\":\"9d04b391-4c81-4e85-8d98-32a149c549d5\",\r\n        \"subjectId\":\"0c4f1d1b-0972-4077-864b-53aee6a4b63b\",\r\n        \"testScore\":89.5\r\n    },\r\n     {\r\n        \"studentId\":\"9d04b391-4c81-4e85-8d98-32a149c549d5\",\r\n        \"subjectId\":\"a280430d-152d-493a-9d93-7c2b0fa31de2\",\r\n        \"testScore\":100\r\n    },\r\n     {\r\n        \"studentId\":\"9d04b391-4c81-4e85-8d98-32a149c549d5\",\r\n        \"subjectId\":\"cd5e3b82-f213-4ce6-8a38-cc710198e9dd\",\r\n        \"testScore\":90\r\n    },\r\n     {\r\n        \"studentId\":\"e4b36ab8-af4b-483f-ab0a-26c53013de40\",\r\n        \"subjectId\":\"0c4f1d1b-0972-4077-864b-53aee6a4b63b\",\r\n        \"testScore\":89.5\r\n    },\r\n     {\r\n        \"studentId\":\"e4b36ab8-af4b-483f-ab0a-26c53013de40\",\r\n        \"subjectId\":\"a280430d-152d-493a-9d93-7c2b0fa31de2\",\r\n        \"testScore\":100\r\n    },\r\n     {\r\n        \"studentId\":\"e4b36ab8-af4b-483f-ab0a-26c53013de40\",\r\n        \"subjectId\":\"cd5e3b82-f213-4ce6-8a38-cc710198e9dd\",\r\n        \"testScore\":90\r\n    }\r\n]\r\n\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:9511/api/demo/scores"
+					},
+					"response": []
+				},
+				{
+					"name": "查询所有学生及科目",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJzdXBlcmFkbWluIiwiaXNzIjoiZnJhbWUiLCJ1aWkiOjEsInVpZCI6ImVkN2NhMGM4OTg4YTQ1ZDViNmEzMWE3ZjRhM2E1ZjY2IiwidW4iOiLotoXnuqfnrqHnkIblkZgiLCJjcGkiOiIyNDdmNWE4MTkxZWU0YjU3YmM4YWU1M2QzMWNmZjU0NSIsInVkaSI6ImVkN2ExZDQ5Zjc3MDQzNTRhODgyNTY1ZWQwYjA2NmY1IiwianRpIjoic3VwZXJhZG1pbi0xNjA1NTk4NzAxIiwiZXhwIjoxNjA1NTk4NzAxfQ.zpet4u3ar1hWGdTdoPXOooS-YKbz0K2DyvfqMTn1QGqqWYlfHy-5FulKyhBhN0xWPEag6JA9s1XuVUZGsIYuLbOfZoYcR0dvXtTyZk-T3CVnc0oXmcWocRYOKwEd7Dsm9uBhdhnvfzVab2eBIRwDaxJ6IAoej59GueS3Zqw2Los",
+								"type": "text"
+							}
+						],
+						"url": "http://localhost:9511/api/demo/schools"
+					},
+					"response": [
+						{
+							"name": "查询所有学生及科目",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJzdXBlcmFkbWluIiwiaXNzIjoiZnJhbWUiLCJ1aWkiOjEsInVpZCI6ImVkN2NhMGM4OTg4YTQ1ZDViNmEzMWE3ZjRhM2E1ZjY2IiwidW4iOiLotoXnuqfnrqHnkIblkZgiLCJjcGkiOiIyNDdmNWE4MTkxZWU0YjU3YmM4YWU1M2QzMWNmZjU0NSIsInVkaSI6ImVkN2ExZDQ5Zjc3MDQzNTRhODgyNTY1ZWQwYjA2NmY1IiwianRpIjoic3VwZXJhZG1pbi0xNjA1NTk4NzAxIiwiZXhwIjoxNjA1NTk4NzAxfQ.zpet4u3ar1hWGdTdoPXOooS-YKbz0K2DyvfqMTn1QGqqWYlfHy-5FulKyhBhN0xWPEag6JA9s1XuVUZGsIYuLbOfZoYcR0dvXtTyZk-T3CVnc0oXmcWocRYOKwEd7Dsm9uBhdhnvfzVab2eBIRwDaxJ6IAoej59GueS3Zqw2Los",
+										"type": "text"
+									}
+								],
+								"url": "http://localhost:9511/api/demo/schools"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Application-Context",
+									"value": "sinoyd-demo:9511"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 17 Nov 2020 06:13:51 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"code\": 200,\n    \"msg\": \"操作成功\",\n    \"data\": {\n        \"students\": [\n            {\n                \"id\": \"69482d9c-fee1-4fbb-9760-e449c7febad1\",\n                \"name\": \"王五\",\n                \"sex\": 1,\n                \"age\": 26,\n                \"birthday\": \"1994-03-10 01:12:00\",\n                \"orderNum\": 999,\n                \"isDeleted\": false,\n                \"creator\": null,\n                \"createDate\": null\n            },\n            {\n                \"id\": \"9d04b391-4c81-4e85-8d98-32a149c549d5\",\n                \"name\": \"王冰\",\n                \"sex\": 1,\n                \"age\": 26,\n                \"birthday\": \"1994-03-10 01:12:00\",\n                \"orderNum\": 999,\n                \"isDeleted\": false,\n                \"creator\": null,\n                \"createDate\": null\n            },\n            {\n                \"id\": \"e4b36ab8-af4b-483f-ab0a-26c53013de40\",\n                \"name\": \"李四\",\n                \"sex\": 1,\n                \"age\": 18,\n                \"birthday\": \"2000-09-10 12:12:00\",\n                \"orderNum\": 999,\n                \"isDeleted\": false,\n                \"creator\": \"ed7ca0c8988a45d5b6a31a7f4a3a5f66\",\n                \"createDate\": \"2020-11-17 09:08:49\"\n            },\n            {\n                \"id\": \"e4d1426a-2ed9-4ac9-88b4-6870155be3a2\",\n                \"name\": \"韩梅梅\",\n                \"sex\": 1,\n                \"age\": 15,\n                \"birthday\": \"2005-01-01 11:00:00\",\n                \"orderNum\": 999,\n                \"isDeleted\": false,\n                \"creator\": \"ed7ca0c8988a45d5b6a31a7f4a3a5f66\",\n                \"createDate\": \"2020-11-17 13:28:40\"\n            }\n        ],\n        \"subjects\": [\n            {\n                \"id\": \"0c4f1d1b-0972-4077-864b-53aee6a4b63b\",\n                \"name\": \"数学\",\n                \"orderNum\": 2,\n                \"isDeleted\": false,\n                \"createDate\": \"2020-11-17 14:02:11\",\n                \"creator\": \"ed7ca0c8988a45d5b6a31a7f4a3a5f66\"\n            },\n            {\n                \"id\": \"a280430d-152d-493a-9d93-7c2b0fa31de2\",\n                \"name\": \"英语\",\n                \"orderNum\": 3,\n                \"isDeleted\": false,\n                \"createDate\": \"2020-11-17 14:02:11\",\n                \"creator\": \"ed7ca0c8988a45d5b6a31a7f4a3a5f66\"\n            },\n            {\n                \"id\": \"cd5e3b82-f213-4ce6-8a38-cc710198e9dd\",\n                \"name\": \"语文\",\n                \"orderNum\": 1,\n                \"isDeleted\": false,\n                \"createDate\": \"2020-11-17 14:02:11\",\n                \"creator\": \"ed7ca0c8988a45d5b6a31a7f4a3a5f66\"\n            }\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "查询学生的成绩",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJzdXBlcmFkbWluIiwiaXNzIjoiZnJhbWUiLCJ1aWkiOjEsInVpZCI6ImVkN2NhMGM4OTg4YTQ1ZDViNmEzMWE3ZjRhM2E1ZjY2IiwidW4iOiLotoXnuqfnrqHnkIblkZgiLCJjcGkiOiIyNDdmNWE4MTkxZWU0YjU3YmM4YWU1M2QzMWNmZjU0NSIsInVkaSI6ImVkN2ExZDQ5Zjc3MDQzNTRhODgyNTY1ZWQwYjA2NmY1IiwianRpIjoic3VwZXJhZG1pbi0xNjA1NjA3NDg0IiwiZXhwIjoxNjA1NjA3NDg0fQ.yoxwfG8Vbj4jIdLwRGIaWQJVUY0le6i-w_p-0yIhaxE5BdIccl2n0C1unuIZ69HCNcB4TiyJSQUOq8fT4U-mPu3YUiB05izamni3toFVOD5VGA1A24M_6Cj91hAgkZgCOXV-Z7bHANiKuAkQPv3vA2MSg7b65OPOW_DIAHaNGLA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:9511/api/demo/scores?studentName",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9511",
+							"path": [
+								"api",
+								"demo",
+								"scores"
+							],
+							"query": [
+								{
+									"key": "studentName",
+									"value": null,
+									"description": "学生姓名"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "查询学生的成绩",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJzdXBlcmFkbWluIiwiaXNzIjoiZnJhbWUiLCJ1aWkiOjEsInVpZCI6ImVkN2NhMGM4OTg4YTQ1ZDViNmEzMWE3ZjRhM2E1ZjY2IiwidW4iOiLotoXnuqfnrqHnkIblkZgiLCJjcGkiOiIyNDdmNWE4MTkxZWU0YjU3YmM4YWU1M2QzMWNmZjU0NSIsInVkaSI6ImVkN2ExZDQ5Zjc3MDQzNTRhODgyNTY1ZWQwYjA2NmY1IiwianRpIjoic3VwZXJhZG1pbi0xNjA1NjA3NDg0IiwiZXhwIjoxNjA1NjA3NDg0fQ.yoxwfG8Vbj4jIdLwRGIaWQJVUY0le6i-w_p-0yIhaxE5BdIccl2n0C1unuIZ69HCNcB4TiyJSQUOq8fT4U-mPu3YUiB05izamni3toFVOD5VGA1A24M_6Cj91hAgkZgCOXV-Z7bHANiKuAkQPv3vA2MSg7b65OPOW_DIAHaNGLA",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:9511/api/demo/scores?studentName",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9511",
+									"path": [
+										"api",
+										"demo",
+										"scores"
+									],
+									"query": [
+										{
+											"key": "studentName",
+											"value": null,
+											"description": "学生姓名"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Set-Cookie",
+									"value": "JSESSIONID=41A540276D774F951B4AB4DF36CED482; Path=/; HttpOnly"
+								},
+								{
+									"key": "X-Application-Context",
+									"value": "sinoyd-demo:9511"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 17 Nov 2020 07:54:59 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"code\": 200,\n    \"msg\": \"操作成功\",\n    \"count\": 9,\n    \"data\": [\n        {\n            \"id\": \"63eec969-e395-4168-99ed-b635b2ab9d37\",\n            \"studentId\": \"e4b36ab8-af4b-483f-ab0a-26c53013de40\",\n            \"subjectId\": \"0c4f1d1b-0972-4077-864b-53aee6a4b63b\",\n            \"testScore\": 89.5,\n            \"isDeleted\": false,\n            \"createDate\": \"2020-11-17 14:10:44\",\n            \"creator\": \"ed7ca0c8988a45d5b6a31a7f4a3a5f66\",\n            \"studentName\": \"李四\",\n            \"subjectName\": \"数学\",\n            \"sexName\": \"男\"\n        },\n        {\n            \"id\": \"69f31771-78c3-46c7-8100-6952ca01201c\",\n            \"studentId\": \"e4b36ab8-af4b-483f-ab0a-26c53013de40\",\n            \"subjectId\": \"cd5e3b82-f213-4ce6-8a38-cc710198e9dd\",\n            \"testScore\": 90,\n            \"isDeleted\": false,\n            \"createDate\": \"2020-11-17 14:10:44\",\n            \"creator\": \"ed7ca0c8988a45d5b6a31a7f4a3a5f66\",\n            \"studentName\": \"李四\",\n            \"subjectName\": \"语文\",\n            \"sexName\": \"男\"\n        },\n        {\n            \"id\": \"8a27cb18-0825-4a33-8365-c42ac23cb1e2\",\n            \"studentId\": \"69482d9c-fee1-4fbb-9760-e449c7febad1\",\n            \"subjectId\": \"a280430d-152d-493a-9d93-7c2b0fa31de2\",\n            \"testScore\": 100,\n            \"isDeleted\": false,\n            \"createDate\": \"2020-11-17 14:10:44\",\n            \"creator\": \"ed7ca0c8988a45d5b6a31a7f4a3a5f66\",\n            \"studentName\": \"王五\",\n            \"subjectName\": \"英语\",\n            \"sexName\": \"男\"\n        },\n        {\n            \"id\": \"90c90a4c-4d15-4879-8ff7-8cdd0bdb57b5\",\n            \"studentId\": \"69482d9c-fee1-4fbb-9760-e449c7febad1\",\n            \"subjectId\": \"0c4f1d1b-0972-4077-864b-53aee6a4b63b\",\n            \"testScore\": 89.5,\n            \"isDeleted\": false,\n            \"createDate\": \"2020-11-17 14:10:44\",\n            \"creator\": \"ed7ca0c8988a45d5b6a31a7f4a3a5f66\",\n            \"studentName\": \"王五\",\n            \"subjectName\": \"数学\",\n            \"sexName\": \"男\"\n        },\n        {\n            \"id\": \"9cce64a1-41d5-4e6f-a96d-ab2b6536a028\",\n            \"studentId\": \"e4b36ab8-af4b-483f-ab0a-26c53013de40\",\n            \"subjectId\": \"a280430d-152d-493a-9d93-7c2b0fa31de2\",\n            \"testScore\": 100,\n            \"isDeleted\": false,\n            \"createDate\": \"2020-11-17 14:10:44\",\n            \"creator\": \"ed7ca0c8988a45d5b6a31a7f4a3a5f66\",\n            \"studentName\": \"李四\",\n            \"subjectName\": \"英语\",\n            \"sexName\": \"男\"\n        },\n        {\n            \"id\": \"b0dc7a62-bdd3-4cb2-aa51-1ef1899fe516\",\n            \"studentId\": \"9d04b391-4c81-4e85-8d98-32a149c549d5\",\n            \"subjectId\": \"cd5e3b82-f213-4ce6-8a38-cc710198e9dd\",\n            \"testScore\": 90,\n            \"isDeleted\": false,\n            \"createDate\": \"2020-11-17 14:10:44\",\n            \"creator\": \"ed7ca0c8988a45d5b6a31a7f4a3a5f66\",\n            \"studentName\": \"王冰\",\n            \"subjectName\": \"语文\",\n            \"sexName\": \"男\"\n        },\n        {\n            \"id\": \"b7c956ed-66d6-4ad3-afe4-1fba61d73da7\",\n            \"studentId\": \"9d04b391-4c81-4e85-8d98-32a149c549d5\",\n            \"subjectId\": \"0c4f1d1b-0972-4077-864b-53aee6a4b63b\",\n            \"testScore\": 89.5,\n            \"isDeleted\": false,\n            \"createDate\": \"2020-11-17 14:10:44\",\n            \"creator\": \"ed7ca0c8988a45d5b6a31a7f4a3a5f66\",\n            \"studentName\": \"王冰\",\n            \"subjectName\": \"数学\",\n            \"sexName\": \"男\"\n        },\n        {\n            \"id\": \"c5b5524d-45ac-4f57-b5af-5ed6d284acd2\",\n            \"studentId\": \"9d04b391-4c81-4e85-8d98-32a149c549d5\",\n            \"subjectId\": \"a280430d-152d-493a-9d93-7c2b0fa31de2\",\n            \"testScore\": 100,\n            \"isDeleted\": false,\n            \"createDate\": \"2020-11-17 14:10:44\",\n            \"creator\": \"ed7ca0c8988a45d5b6a31a7f4a3a5f66\",\n            \"studentName\": \"王冰\",\n            \"subjectName\": \"英语\",\n            \"sexName\": \"男\"\n        },\n        {\n            \"id\": \"d98735c1-c40d-4cd2-a5b8-a403c2e1571c\",\n            \"studentId\": \"69482d9c-fee1-4fbb-9760-e449c7febad1\",\n            \"subjectId\": \"cd5e3b82-f213-4ce6-8a38-cc710198e9dd\",\n            \"testScore\": 90,\n            \"isDeleted\": false,\n            \"createDate\": \"2020-11-17 14:10:44\",\n            \"creator\": \"ed7ca0c8988a45d5b6a31a7f4a3a5f66\",\n            \"studentName\": \"王五\",\n            \"subjectName\": \"语文\",\n            \"sexName\": \"男\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "获得mongodb小时数据",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJzdXBlcmFkbWluIiwiaXNzIjoiZnJhbWUiLCJ1aWkiOjEsInVpZCI6ImVkN2NhMGM4OTg4YTQ1ZDViNmEzMWE3ZjRhM2E1ZjY2IiwidW4iOiLotoXnuqfnrqHnkIblkZgiLCJjcGkiOiIyNDdmNWE4MTkxZWU0YjU3YmM4YWU1M2QzMWNmZjU0NSIsInVkaSI6ImVkN2ExZDQ5Zjc3MDQzNTRhODgyNTY1ZWQwYjA2NmY1IiwianRpIjoic3VwZXJhZG1pbi0xNjA1Njc3MzI3IiwiZXhwIjoxNjA1Njc3MzI3fQ.l984yWmev7rH2nWKE4lFUoP7ag7HNuPDAVPe4hfMkjXoOxBHErdcaWsXyIhCtVI26S9zC3hBKLehqDeH7ijcI1QKLPtm5zqXn5g9L7owNwp9UUoIFHiei9lWAslpHK_dl3NfVXoYKjLukX-10XfRMPVQqAZ0r7LQ5gjCsvdafUA",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:9511/api/demo/students/hourdata?portType=1&portId=5F1E8179-53D1-478D-8AC8-7EF84FD1F54E&fromDate=2020-08-30&toDate=2020-08-31",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9511",
+							"path": [
+								"api",
+								"demo",
+								"students",
+								"hourdata"
+							],
+							"query": [
+								{
+									"key": "portType",
+									"value": "1",
+									"description": "点位类型：1废水、2废气"
+								},
+								{
+									"key": "portId",
+									"value": "5F1E8179-53D1-478D-8AC8-7EF84FD1F54E",
+									"description": "点位ID"
+								},
+								{
+									"key": "fromDate",
+									"value": "2020-08-30",
+									"description": "数据开始时间"
+								},
+								{
+									"key": "toDate",
+									"value": "2020-08-31",
+									"description": "数据结束时间"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "获得mongodb小时数据2",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJzdXBlcmFkbWluIiwiaXNzIjoiZnJhbWUiLCJ1aWkiOjEsInVpZCI6ImVkN2NhMGM4OTg4YTQ1ZDViNmEzMWE3ZjRhM2E1ZjY2IiwidW4iOiLotoXnuqfnrqHnkIblkZgiLCJjcGkiOiIyNDdmNWE4MTkxZWU0YjU3YmM4YWU1M2QzMWNmZjU0NSIsInVkaSI6ImVkN2ExZDQ5Zjc3MDQzNTRhODgyNTY1ZWQwYjA2NmY1IiwianRpIjoic3VwZXJhZG1pbi0xNjA1NzA0MTQ2IiwiZXhwIjoxNjA1NzA0MTQ2fQ.gKWItXmo3R6oNSl9WJF2KA95zOr-Gt6_CJ1EkXbgXn0sgVaI2kU_Nhcd1bydhCW1eQ4bE7ZlHHvIXaPPayjUhYqKqbnNLKOXxK_WDFc6oHljkRJOuNMTnSR9hYrovMUaE4fIs8twuK3s5rAuFiXS6LYQy97L4OOSgIImigMRQrQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"portType\":1,\r\n    \"portId\":\"5F1E8179-53D1-478D-8AC8-7EF84FD1F54E\",\r\n    \"fromDate\":\"2020-08-30\",\r\n    \"toDate\":\"2020-08-31\",\r\n    // \"createFromTime\":\"2020-11-01\",\r\n    // \"createToTime\":\"2020-11-03\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9511/api/demo/students/hourdata2?page=1&rows=10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9511",
+							"path": [
+								"api",
+								"demo",
+								"students",
+								"hourdata2"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1",
+									"description": "页码"
+								},
+								{
+									"key": "rows",
+									"value": "10",
+									"description": "每页记录数"
+								}
+							]
+						},
+						"description": "```\r\n{\r\n    \"portType\":1,//点位类型：1废水、2废气\r\n    \"portId\":\"5F1E8179-53D1-478D-8AC8-7EF84FD1F54E\",//点位ID\r\n    \"fromDate\":\"2020-08-30\",//数据开始时间\r\n    \"toDate\":\"2020-08-31\"//数据结束时间\r\n}\r\n```"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "70978426-efd0-48a3-abad-773d9e429024",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "4ff5b4af-13f8-41d6-a589-adeb5729a1a3",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
