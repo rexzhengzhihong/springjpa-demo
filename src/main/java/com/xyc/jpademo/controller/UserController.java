@@ -19,7 +19,7 @@ public class UserController {
     /**
      * 新增用户
      */
-    @PostMapping("")
+    @PostMapping("/add")
     public User addUser(@RequestBody User user) {
         return userService.insertUser(user);
     }

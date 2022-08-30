@@ -1,5 +1,7 @@
 server:
   port: 2333
+  servlet:
+    context-path: /springjpademo
 spring:
   application:
     name: springjpademo
@@ -12,7 +14,7 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     show-sql: true
 
 
