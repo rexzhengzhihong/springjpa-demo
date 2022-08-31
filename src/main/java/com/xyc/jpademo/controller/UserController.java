@@ -32,7 +32,7 @@ public class UserController {
     /**
      * 删除用户
      */
-    @DeleteMapping("/{id}")
+    @PostMapping("/deleteone/{id}")
     public void deleteUser(@PathVariable("id") Integer id) {
         userService.deleteUser(id);
     }
@@ -40,7 +40,7 @@ public class UserController {
     /**
      * 修改用户
      */
-    @PutMapping("")
+    @PostMapping("/update")
     public User updateUser(@RequestBody User user) {
         return userService.updateUser(user);
     }
@@ -48,7 +48,7 @@ public class UserController {
     /**
      * 全查用户
      */
-    @GetMapping("")
+    @GetMapping("/getAllUser")
     public List<User> findAll() {
         return userService.findAllUser();
     }
@@ -56,7 +56,7 @@ public class UserController {
     /**
      * id查用户
      */
-    @GetMapping("/{id}")
+    @GetMapping("/query/{id}")
     public User findbyId(@PathVariable("id") Integer id) {
         return userService.findUserById(id);
     }
