@@ -7,14 +7,18 @@ spring:
     name: springjpademo
 
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/springjpademo?useUnicode=true&characterEncoding=utf8&useSSL=false
+    #driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: net.sf.log4jdbc.DriverSpy
+    #url: jdbc:mysql://localhost:3306/springjpademo?useUnicode=true&characterEncoding=utf8&useSSL=false
+    url: jdbc:log4jdbc:mysql://localhost:3306/springjpademo?useUnicode=true&characterEncoding=utf8&useSSL=false
     username: root
     password: root
 
   jpa:
     hibernate:
       ddl-auto: update
-    show-sql: true
+    show-sql: false
 
+logging:
+  config: classpath:logback/logback-test.xml
 

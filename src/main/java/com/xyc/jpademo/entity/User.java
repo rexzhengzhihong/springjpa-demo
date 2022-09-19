@@ -32,7 +32,7 @@ public class User
     private String usercode;
 
     @Column(name = "OBJECT_VERSION" )
-    @Version
+    //@Version
     private Integer objectVersion;
 
     @Column(name = "CREATED_BY" ,length = 32)
